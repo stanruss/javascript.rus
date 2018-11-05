@@ -1,0 +1,30 @@
+@import "../libs/bootstrap/scss/my-variables"
+@import "../libs/bootstrap/scss/bootstrap"
+@import "_mixins/mixins"
+@import "../css/icon-font.min.css"
+@import "vars"
+@import "fonts"
+
+html, body
+	height: 100%
+
+	body
+		font-size: 16px
+		min-width: 320px
+		position: relative
+		line-height: 1.65
+		font-family: $default-font
+		overflow-x: hidden
+		input, textarea
+			outline: none
+			&:focus:required:invalid
+				border-color: red
+				&:required:valid
+					border-color: green
+
+.clearfix
+	display: block
+	clear: both
+	content: ""
+
+@import "media" // Always at the end
