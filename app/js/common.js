@@ -79,29 +79,52 @@ z < d ? document.write("прав") : document.write("неправ"); */
 // } else {
 // 	alert("Sorry " + person);
 // };
-var arr = new Array("str", 1.23, 7, false);
-for (var i = 0; i < arr.length; i++) {
-document.write("<br>" + arr[i]);
-};
-arr = new Array();
-for (i = 0; i < 10; i++) {
-	arr[i] = i * 3;
-	document.write(arr[i] + "<br>");
-};
-var summ = 0;
-for (i = 0; i < arr.length; i++)
-	summ += arr[i];
-	document.write("<br> Суммма - " + (summ / arr.length));
-var arr_1 = new Array();
-var arr_2 = new Array();
-var arr_3 = new Array();
-for (i = 0; i < 5; i++) arr_1[i] = i;
-for (i = 0; i < 10; i++) arr_2[i] = i;
-for (i = 0; i < 15; i++) arr_3[i] = i;
-var arr = new Array(arr_1, arr_2, arr_3);
-document.write("<br>");
-for (var x = 0; x < arr.length; x++) {
-	for (var g = 0; g < arr[x].length; g++) {
-		document.write(arr[x] [g] + " ");
-	};
-};
+// var arr = new Array("str", 1.23, 7, false);
+// for (var i = 0; i < arr.length; i++) {
+// document.write("<br>" + arr[i]);
+// };
+// arr = new Array();
+// for (i = 0; i < 10; i++) {
+// 	arr[i] = i * 3;
+// 	document.write(arr[i] + "<br>");
+// };
+// var summ = 0;
+// for (i = 0; i < arr.length; i++)
+// 	summ += arr[i];
+// 	document.write("<br> Суммма - " + (summ / arr.length));
+// var arr_1 = new Array();
+// var arr_2 = new Array();
+// var arr_3 = new Array();
+// for (i = 0; i < 5; i++) arr_1[i] = i;
+// for (i = 0; i < 10; i++) arr_2[i] = i;
+// for (i = 0; i < 15; i++) arr_3[i] = i;
+// var arr = new Array(arr_1, arr_2, arr_3);
+// document.write("<br>");
+// for (var x = 0; x < arr.length; x++) {
+// 	for (var g = 0; g < arr[x].length; g++) {
+// 		document.write(arr[x] [g] + " ");
+// 	};
+// };
+// document.write("<br>");
+// var summ;
+// function print (text) {
+// 	document.write(text);
+// }
+// function count (x, y) {
+// 	summ = x * y;
+// }
+// print ( "hello" );
+// print ( "<br>" );
+// count ( 7, 9 );
+// print ( summ );
+// document.write("<br>");
+
+var global = 25;
+var i = 15;
+
+function test () {
+	global++;
+	var i = 5;
+}
+test();
+document.write("Global - " + global + ", variable i - " + i);

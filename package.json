@@ -9,11 +9,11 @@
   "author": "stanruss",
   "license": "ISC",
   "devDependencies": {
-    "bootstrap": "^4.1.3",
+    "bootstrap": "^4.2.1",
     "browser-sync": "^2.26.3",
-    "gulp": "^3.9.1",
+    "gulp": "^3.0.0",
     "gulp-autoprefixer": "^6.0.0",
-    "gulp-clean-css": "^3.10.0",
+    "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-notify": "^3.2.0",
     "gulp-rename": "^1.4.0",
@@ -23,6 +23,6 @@
     "gulp-util": "^3.0.8"
   },
   "dependencies": {
-    "npm": "^6.4.1"
+    "npm": "^6.7.0"
   }
 }
