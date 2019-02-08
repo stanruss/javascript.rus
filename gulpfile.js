@@ -1,3 +1,6 @@
+var syntax        = 'sass', // Syntax: sass or scss;
+		gulpversion   = '4'; // Gulp version: 3 or 4
+
 var gulp          = require('gulp'),
 		gutil         = require('gulp-util' ),
 		sass          = require('gulp-sass'),
@@ -39,7 +42,7 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('sass', function() {
-	return gulp.src('app/sass/**/*.sass')
+	return gulp.src('app/'+syntax+'/**/*.'+syntax+'')
 	.pipe(sass({ outputStyle: 'expand' }).on("error", notify.onError()))
 	.pipe(rename({ suffix: '.min', prefix : '' }))
 	.pipe(autoprefixer(['last 15 versions']))
@@ -47,26 +50,23 @@ gulp.task('sass', function() {
 	.pipe(gulp.dest('app/css'))
 	.pipe(browsersync.reload( {stream: true} ))
 });
-
+gulp.task('code', function() {
+	return gulp.src('app/*.html')
+	.pipe(browserSync.reload({ stream: true }))
+});
+if (gulpversion == 3) {
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
-	gulp.watch('app/sass/**/*.sass', ['sass']);
+	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['sass']);
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
 	gulp.watch('app/*.html', browsersync.reload)
 });
-
-gulp.task('rsync', function() {
-	return gulp.src('app/**')
-	.pipe(rsync({
-		root: 'app/',
-		hostname: 'username@yousite.com',
-		destination: 'yousite/public_html/',
-		// include: ['*.htaccess'], // Includes files to deploy
-		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
-		recursive: true,
-		archive: true,
-		silent: false,
-		compress: true
-	}))
-});
-
 gulp.task('default', ['watch']);
+}
+if (gulpversion == 4) {
+	gulp.task('watch', function() {
+		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('sass'));
+		gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('js'));
+		gulp.watch('app/*.html', gulp.parallel('code'))
+	});
+	gulp.task('default', gulp.parallel('sass', 'js', 'browser-sync', 'watch'));
+}
